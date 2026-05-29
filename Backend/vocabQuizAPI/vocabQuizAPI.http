@@ -1,0 +1,6 @@
+@vocabQuizAPI_HostAddress = http://localhost:5048
+
+GET {{vocabQuizAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Technical demonstration of SQL Injection and 1NF violations.">
+    <meta name="author" content="[Your Name]">
+    <title>Security Demo - VocabMaster 2000</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link id="theme-link" rel="stylesheet" href="css/theme-98.css">
+</head>
+<body>
+
+    <div class="desktop-layout centered">
+
+        <div class="win98-window main-window medium-width">
+            
+            <div class="title-bar" style="background: linear-gradient(90deg, #800000, #ff0000);">
+                <div class="title-bar-text">⚡ SYSTEM VULNERABILITY DEMONSTRATION</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close" onclick="window.location.href='quiz.html'"></button>
+                </div>
+            </div>
+
+            <div class="window-body">
+                <header class="app-header">
+                    <nav>
+                        <button class="win-btn" onclick="window.location.href='quiz.html'">Quiz</button>
+                        <button class="win-btn" onclick="window.location.href='dashboard.html'">Editor</button>
+                        <button class="win-btn active">Admin Demo</button>
+                    </nav>
+                    <div class="theme-switch">
+                        <button class="win-btn small" onclick="setTheme('98')">98</button>
+                        <button class="win-btn small" onclick="setTheme('modern')">Modern</button>
+                    </div>
+                </header>
+
+                <main style="display: flex; flex-direction: column; gap: 20px;">
+                    
+
+                    <fieldset>
+                        <legend>1. SQL Injection (Security Vulnerability)</legend>
+                        <p style="font-size: 0.9em; margin-bottom: 10px;">
+                            This search field uses <strong>string concatenation</strong> instead of parameters. 
+                            <br><em>Try:</em> <code style="background: #ffff00; color: black; padding: 2px;">' OR '1'='1</code>
+                        </p>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="text" id="search-term" class="win-input" placeholder="Search English word..." style="margin-bottom:0;">
+                            <button class="win-btn" onclick="runInjection()">Execute Attack</button>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <label>Raw Database Response:</label>
+                            <div class="scroll-list" style="background: #000; color: #0f0; font-family: monospace; height: 150px; padding: 10px;">
+                                <pre id="injection-result" style="margin:0;">Waiting for command...</pre>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+                    <fieldset>
+                        <legend>2. 1NF Violation (Unnormalized Data)</legend>
+                        <p style="font-size: 0.9em; margin-bottom: 10px;">
+                            The 'Contact Info' field violates 1NF by storing multiple attributes in one cell.
+                        </p>
+                        <div style="display: grid; gap: 10px;">
+                            <input type="text" id="contact-name" class="win-input" placeholder="User Name" style="margin:0;">
+                            <textarea id="contact-msg" class="win-input" placeholder="Your Message..." style="height: 50px; margin:0;"></textarea>
+                            <input type="text" id="contact-info" class="win-input" placeholder="Combined Info (Email, Phone, Address)" style="margin:0;">
+                            <button class="win-btn" onclick="submitBadForm()">Insert Unnormalized Row</button>
+                        </div>
+                        <p id="contact-status" style="margin-top: 5px; text-align: center; font-weight: bold;"></p>
+                    </fieldset>
+
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

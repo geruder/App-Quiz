@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master-Detail view of vocabulary categories.">
+    <meta name="author" content="[Your Name]">
+    <title>Categories - VocabMaster 2000</title>
+    
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link id="theme-link" rel="stylesheet" href="css/theme-98.css">
+</head>
+<body>
+
+    <div class="desktop-layout centered">
+        
+        <div class="win98-window main-window medium-width">
+            
+
+            <div class="title-bar">
+                <div class="title-bar-text">Category Explorer</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+
+            <div class="window-body">
+
+                <header class="app-header">
+                    <nav>
+                        <button class="win-btn" onclick="window.location.href='quiz.html'">Quiz</button>
+                        <button class="win-btn" onclick="window.location.href='review.html'">Review</button>
+                        <button class="win-btn" onclick="window.location.href='stats.html'">Stats</button>
+                        <button class="win-btn active">Categories</button>
+                        <button class="win-btn" onclick="window.location.href='dashboard.html'">Editor</button>
+                    </nav>
+                    <div class="theme-switch">
+                        <button class="win-btn small" onclick="setTheme('98')">98</button>
+                        <button class="win-btn small" onclick="setTheme('modern')">Modern</button>
+                    </div>
+                </header>
+
+
+                <main class="category-layout" style="display: flex; gap: 15px; flex-grow: 1; height: 0;">
+                    
+
+                    <aside style="width: 30%; display: flex; flex-direction: column;">
+                        <fieldset style="flex-grow: 1; display: flex; flex-direction: column;">
+                            <legend>Categories</legend>
+                            <div id="category-list" class="scroll-list">
+                                <p>Loading...</p>
+                            </div>
+                        </fieldset>
+                    </aside>
+
+                    <section style="width: 70%; display: flex; flex-direction: column;">
+                        <fieldset style="flex-grow: 1; display: flex; flex-direction: column;">
+                            <legend id="selected-category-name">Select a topic</legend>
+                            <div id="word-list" class="scroll-list" style="background: white; color: black;">
+                                <p style="padding: 10px;">Please click a category on the left to view words.</p>
+                            </div>
+                        </fieldset>
+                    </section>
+
+                </main>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/common.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/categories.js"></script>
+</body>
+</html>

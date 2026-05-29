@@ -1,0 +1,420 @@
+/* global variables, win98*/
+:root {
+    --bg-color: #008080;              
+    --window-bg: #c0c0c0;             
+    --text-color: #000000;
+    --title-bar-bg: #000080;          
+    --title-bar-text: #ffffff;
+    
+    /* borderlar  */
+    --border-light: #ffffff;
+    --border-gray: #dfdfdf; /* #dfdfdf */
+    --border-dark: #808080;  /* #808080 */
+    --border-black: #000000;
+}
+
+/* genel cssler */
+* { box-sizing: border-box; }
+body {
+    background-color: var(--bg-color);
+    font-family: "Fixedsys", "Fixedsys Excelsior", "Courier New", monospace; /* "MS Sans Serif", "Segoe UI", sans-serif */
+    color: var(--text-color);
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-size: 14px;
+    font-weight: bold; 
+}
+
+/* kapali kisimlar kapali */
+.hidden { display: none !important; }
+
+/* sadece (login-review-dashboard)icin, quizde history de var */
+.auth-wrapper, .centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+/* (quiz / Stats) */
+.desktop-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+    padding-top: 5vh;
+    height: 100%;
+}
+
+/* win98 sekme */
+.win98-window {
+    background-color: var(--window-bg);
+    padding: 3px; 
+    box-shadow:  /* inset shadowlar ile gorsellik */
+        inset 1px 1px var(--border-light), 
+        inset 2px 2px var(--border-gray),
+        inset -2px -2px var(--border-black), 
+        inset -3px -3px var(--border-dark);
+    display: flex;
+    flex-direction: column;
+}
+
+/* farkli window size */
+.auth-window { 
+    width: 100%;
+    max-width: 450px;
+}
+.main-window { 
+    width: 100%;
+    max-width: 1000px;
+    height: 800px; 
+}
+
+.medium-width{
+    max-width: 800px;
+}
+
+.history-window { 
+    width: 100%;
+    max-width: 300px;
+    height: 800px; 
+}
+.modal-window { 
+    width: 100%;
+    max-width: 600px; 
+}
+
+/* title bar kisim */
+.title-bar {
+    background: linear-gradient(to right, var(--title-bar-bg), #1084d0);
+    color: var(--title-bar-text);
+    padding: 6px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+
+.title-bar-controls button {
+    width: 16px;
+    height: 14px;
+    background: var(--window-bg);
+    border: 1px outset white;
+    font-size: 9px;
+    line-height: 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding: 0;
+    cursor: pointer;
+}
+
+/* title bar taklit */
+button[aria-label="Minimize"]::after { content: "_"; position: relative; top: -2px; }
+button[aria-label="Maximize"]::after { content: "□"; font-size: 15px; }
+button[aria-label="Close"]::after { content: "✕"; }
+
+
+.title-bar-controls button:active {
+    border: 1px inset white;
+}
+
+/* 
+.win-btn:active, .win-btn.active {
+    border: 2px inset white;
+    background: #e0e0e0; 
+}
+*/ 
+
+
+/* win98 sekme body */
+.window-body {
+    padding: 10px;
+    flex-grow: 1;
+    overflow: auto; /* fazla gelirse scroll */
+}
+
+/* formlar */
+.win-input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 6px;
+    border: 2px inset white;
+    background: white;
+    font-family: inherit;
+}
+
+/* butonlar */
+.win-btn {
+    background: var(--window-bg);
+    border: 2px outset white;
+    border-bottom: 2px solid gray;
+    border-right: 2px solid gray;
+    color: black;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+}
+.win-btn:active, .win-btn.active {
+    border: 2px inset white;
+    background: #e0e0e0;
+}
+.win-btn.small { 
+    padding: 2px 6px; 
+    font-size: 12px; 
+}
+
+/* history kisimlari */
+#history-list-sidebar, .scroll-list {
+    list-style: none;
+    padding: 5px;
+    margin: 0;
+    background: var(--border-dark);
+    border: 2px inset white;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.history-item {
+    padding: 5px;
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 2px;
+}
+.correct-history { 
+    background: #eaffea; 
+    color: green; 
+}
+.wrong-history { 
+    background: #ffeaea; 
+    color: red; 
+}
+
+/* kelime ekleme */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+/* secenekler */
+.option-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    width: 90%;
+    max-width: 800px;
+    margin: 30px 0;
+}
+
+/* secenekler */
+.option-btn { 
+    padding: 20px;
+    font-size: 1.8rem;
+    min-height: 100px;
+    width: 100%;
+    color: var(--title-bar-bg);
+}
+
+.switch-link { 
+    color: blue; 
+    text-decoration: underline; 
+    cursor: pointer; 
+    text-align: center; 
+    display: block; 
+    margin-top: 10px; 
+}
+
+/*unuttugum flex olacak navbar kisimlari */
+.app-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;            
+    margin-bottom: 20px;            
+    padding-bottom: 10px;
+    border-bottom: 2px groove #dfdfdf; 
+}
+
+/* kelime ve cefr */
+.word-area{
+    display: flex;
+    gap: 10%;
+}
+
+.app-header nav, .theme-switch{
+    display: flex;
+    gap: 5px; 
+}
+
+
+.cefr{
+    display: inline-block;
+    height: 100%;
+    text-decoration: underline;
+    color: var(--title-bar-bg);
+    cursor: help; 
+    transition: transform 0.5s ease-in-out;
+}
+
+.cefr:hover{
+    transform: rotate(360deg);
+    color: var(--bg-color);
+    text-decoration: overline;
+}
+
+
+.quiz-content {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;           
+    width: 100%;
+}
+
+.question-word {
+    text-align: center;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 40px; 
+    font-size: 3rem;    
+    transition: transform 0.3s ease-in-out; 
+}
+
+.question-word:hover{
+    transform: scale(1.1);
+    text-decoration: underline;
+}
+
+@keyframes bounceAnimation {  /* nyancat animasyon ciscodan baktim */
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.bouncing-mascot {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999; 
+    
+    width: 100px;  
+    height: 60px;  
+    
+    
+    background-image: url('https://freepngimg.com/download/nyan_cat/2-2-nyan-cat-png.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+
+    animation-name: bounceAnimation;
+    animation-duration: 2s; 
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    
+    pointer-events: none; /* tiklanamaz */ 
+}
+
+.table-container{
+    overflow: auto;
+    
+}
+
+.win-table{
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 2px inset white;
+}
+
+.win-table th{
+    background-color: var(--window-bg);
+    border: 1px outset white;
+    padding: 8px;
+    text-align: left;
+}
+
+.win-table td{
+    border: 1px dotted gray;
+    padding: 5px;
+}
+
+
+/* responsive kisim icin gerekli ayarlamalar */
+
+@media (max-width: 900px){
+    
+
+    body{
+        overflow: auto; /* scroll ac */
+        height: auto;
+        padding-bottom: 50px;
+    }
+
+    .desktop-layout{
+        flex-direction: column; 
+        align-items: center;
+        height: auto;
+        padding-top: 10px;
+    }
+
+    .centered{
+        display: block;
+        padding-top: 20px;
+        height: auto;
+    }
+
+    .main-window, .history-window, .medium-width {
+        order: 1; /* responsive icin once quiz gozuksun istiyoruz */
+        width: 95%;
+        max-width: 100%;
+        height: auto;
+        min-height: 500px;
+        margin-bottom: 20px;
+    }
+
+    .history-window {
+        order: 2; /* responsivede history sonradan altta olsun */
+        height: 300px;
+        min-height: 0;
+    }
+
+    
+    .history-window {
+        height: 200px; 
+        min-height: 0;
+    }
+
+    
+    .option-grid {
+        grid-template-columns: 1fr; 
+        gap: 10px;
+    }
+
+    .option-btn {
+        padding: 20px; 
+        font-size: 1.5rem;
+        min-height: 60px;
+    }
+
+
+    .app-header {
+        flex-direction: column; 
+        gap: 10px;
+    }
+    
+    .app-header nav {
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+
+}

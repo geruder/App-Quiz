@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Secure login portal for VocabQuiz. Access your vocabulary learning progress.">
+    <meta name="author" content="ISE313">
+    <title>Login - Vocab Master</title>
+    <link id="theme-link" rel="stylesheet" href="css/theme-98.css"> <!-- id kismi theme switcher icin -->
+    <link rel="icon" type="Image/png" href="Image\favicon.png">
+</head>
+<body>
+    
+    
+    <div class="auth-wrapper">
+        
+        <div class="win98-window auth-window"> <!-- main kisim -->
+            
+            <!-- title bar kisim-->
+            <div class="title-bar">
+                <div class="title-bar-text">Login.exe</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+
+            <div class="window-body">
+                <div id="login-form">
+                    <div style="text-align:center; margin: 20px;">
+                        <img src="https://win98icons.alexmeub.com/icons/png/key_win-0.png" alt="key">
+                    </div>
+                    <p>Log in to your account.</p>
+                    
+                    <label>Email:</label>
+                    <input type="email" id="login-email" class="win-input">
+                    
+                    <label>Password:</label>
+                    <input type="password" id="login-password" class="win-input">
+
+                    <div style="margin-top: 15px; text-align: right;">
+                        <button class="win-btn" onclick="AppLogin.doLogin()">OK</button>
+                    </div>
+
+                    <p class="switch-link" onclick="AppLogin.toggleMode()">New user? Register here</p>
+                </div>
+
+                <!-- register kismi, default hidden -->
+                <div id="register-form" style="display:none;">
+                    <p>Create a new User Profile.</p>
+                    
+                    <label>Username:</label>
+                    <input type="text" id="reg-username" class="win-input">
+
+                    <label>Email:</label>
+                    <input type="email" id="reg-email" class="win-input">
+                    
+                    <label>Password:</label>
+                    <input type="password" id="reg-password" class="win-input">
+
+                    <div style="margin-top: 15px; text-align: right;">
+                        <button class="win-btn" onclick="AppLogin.doRegister()">Register</button>
+                    </div>
+
+                    <p class="switch-link" onclick="AppLogin.toggleMode()">Back to Login</p>
+                </div>
+                
+                <p id="error-msg" style="color:red; text-align:center; margin-top:10px;"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

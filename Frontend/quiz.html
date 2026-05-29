@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn new English vocabulary with spaced repetition logic and instant feedback.">
+    <meta name="author" content="ISE313"><title>Vocab Quiz</title>
+    <link id="theme-link" rel="stylesheet" href="css/theme-98.css">
+    <link rel="icon" type="Image/png" href="Image\favicon.png">
+</head>
+<body>
+
+    <div class="desktop-layout">
+
+        <!-- kullanici history kismi -->
+        <div class="win98-window history-window">
+            <div class="title-bar">
+                <div class="title-bar-text">History</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body" style="height: 100%; display: flex; flex-direction: column;">
+                <ul id="history-list-sidebar">
+                    <!-- js apiden cekip dolduracak -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- main kisim -->
+        <div class="win98-window main-window">
+            
+            <div class="title-bar">
+                <div class="title-bar-text">VocabMaster 2000</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+
+            <div class="window-body">
+                <!-- nav kisim -->
+                <header class="app-header">
+                    <nav>
+                        <button class="win-btn active">Quiz</button>
+                        <button class="win-btn" onclick="window.location.href='review.html'">Review</button>
+                        <button class="win-btn" onclick="window.location.href='stats.html'">Stats</button>
+                        <button class="win-btn" onclick="window.location.href='categories.html'">Categories</button>
+                        <button class="win-btn" onclick="window.location.href='dashboard.html'">Editor</button>
+                    </nav>
+                    <div class="theme-switch">
+                        <button class="win-btn small" onclick="setTheme('98')">Retro 98'</button>
+                        <button class="win-btn small" onclick="setTheme('modern')">Modern</button>
+                        <button class="win-btn small" onclick="logout()" style="color:red; font-weight: bold;">✕</button>
+                    </div>
+                </header>
+
+                <!-- quiz kisim -->
+                <main class="quiz-content">
+                    <div class="word-area">
+                        <h1 class="question-word">LOADING... </h1> <!-- api sikintili veya uzun surerse gosterilir -->
+                        <h3 id="cefr" class="cefr"> </h3>
+                    </div>
+                    <div class="option-grid">
+                        <!-- js apiden cekip dolduracak -->
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="win-btn idk-btn">I don't know</button>
+                    </div>
+                </main>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- scripts -->
+
+    <script src="js/api.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>
